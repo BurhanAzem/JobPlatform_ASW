@@ -5,6 +5,14 @@ const app = express();
 //const path = require('path')
 const multer = require('multer')
 const mydb = require("./config/db");
+
+// const swaggerUi = require('swagger-ui-express');
+// const swaggerSpec = require('./swagger.js'); // Update the path according to your Swagger configuration file
+
+
+const swaggerUi = require('swagger-ui-express'),
+swaggerDocument = require('./swagger.json');
+
 const employer_router = require("./routes/employer_router");
 
 const jobApplication_router = require("./routes/jobApplication_router");
@@ -36,6 +44,13 @@ filename: (req, file, cb) => {
 
 const upload = multer({ storage })
 
+
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(
+  '/api-docs',
+  swaggerUi.serve, 
+  swaggerUi.setup(swaggerDocument)
+);
 
 // for json encoding :
 app.use(bodyParser.json());
