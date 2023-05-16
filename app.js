@@ -42,7 +42,6 @@ filename: (req, file, cb) => {
 const upload = multer({ storage })
 
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 // for json encoding :
@@ -53,15 +52,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // handling routes :
 app.use('/upload', express.static('Upload'));
 
-app.use("/employers", employer_router);
+app.use("/api/employers", employer_router);
 
-app.use('/jobApplications',jobApplication_router);
+app.use('/api/jobApplications', jobApplication_router);
 
-app.use('/jobPosts', jobPost_router);
+app.use('/api/jobPosts', jobPost_router);
 
-app.use('/jobSeekers', jobSeeker_router);
+app.use("/api/job-seekers", jobSeeker_router);
 
-app.use('/requirements', requirement_router);
+app.use('/api/requirements', requirement_router);
 
 app.use('/searchHistoryes', searchHistory_router);
 

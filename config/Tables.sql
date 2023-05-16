@@ -1,16 +1,18 @@
+use jobsplatform;
+
 -- Create table "employers"
 CREATE TABLE employers (
-  EmployerID INT PRIMARY KEY,
+  EmployerID INT PRIMARY KEY AUTO_INCREMENT,
   Name VARCHAR(255),
   Address VARCHAR(255),
-  Email VARCHAR(255),
+  Email VARCHAR(255) unique NOT NULL,
   PasswordSlot VARCHAR(255),
   PasswordHashed VARCHAR(255)
 );
 
 -- Create table "requirements"
 CREATE TABLE requirements (
-  RequirementID INT PRIMARY KEY,
+  RequirementID INT PRIMARY KEY AUTO_INCREMENT,
   Age INT,
   Major VARCHAR(255),
   NumberExperienceYears INT,
@@ -19,39 +21,43 @@ CREATE TABLE requirements (
 
 -- Create table "job_seekers"
 CREATE TABLE job_seekers (
-  JobSeekerID INT PRIMARY KEY,
+  JobSeekerID INT PRIMARY KEY AUTO_INCREMENT,
   Name VARCHAR(255),
   Address VARCHAR(255),
   Major VARCHAR(255),
   Age INT,
   NumberExperienceYears INT,
-  Email VARCHAR(255),
+  Email VARCHAR(255) unique NOT NULL,
   PasswordSlot VARCHAR(255),
   PasswordHashed VARCHAR(255)
 );
 
--- Create table "search_history"
-CREATE TABLE search_history (
-  SearchHistoryID INT PRIMARY KEY,
-  JobSeekerID INT,
-  SearchContext VARCHAR(255),
-  SearchedDate DATE,
-  ExpirationDate DATE,
-  FOREIGN KEY (JobSeekerID) REFERENCES job_seekers(JobSeekerID)
-);
 
--- Create table "job_posts"
 CREATE TABLE job_posts (
-  JobPostID INT PRIMARY KEY,
+  JobPostID INT PRIMARY KEY AUTO_INCREMENT,
   EmployerID INT,
   RequirementID INT,
   Title VARCHAR(255),
   Description TEXT,
   StartSalary DECIMAL(10,2),
   EndSalary DECIMAL(10,2),
+   Stauts varchar(20),
   FOREIGN KEY (EmployerID) REFERENCES employers(EmployerID),
   FOREIGN KEY (RequirementID) REFERENCES requirements(RequirementID)
 );
+-- Create table "search_history"
+CREATE TABLE search_history (
+  SearchHistoryID INT PRIMARY KEY AUTO_INCREMENT,
+  JobSeekerID INT,
+  JobPostID INT,
+  SearchedDate DATE,
+  FOREIGN KEY (JobSeekerID) REFERENCES job_seekers(JobSeekerID),
+   FOREIGN KEY (JobPostID) REFERENCES job_posts(JobPostID)
+
+);
+
+-- Create table "job_posts"
+
 
 -- Create table "job_applications"
 CREATE TABLE job_applications (
@@ -60,6 +66,7 @@ CREATE TABLE job_applications (
   JobSeekerID INT,
   ResumePath VARCHAR(255),
   CoverLetter TEXT,
+  Stauts varchar(20),
   FOREIGN KEY (JobPostID) REFERENCES job_posts(JobPostID),
   FOREIGN KEY (JobSeekerID) REFERENCES job_seekers(JobSeekerID)
 );
