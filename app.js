@@ -54,9 +54,9 @@ app.use('/upload', express.static('Upload'));
 
 app.use("/api/employers", employer_router);
 
-app.use('/api/jobApplications', jobApplication_router);
+app.use('/api/job-applications', jobApplication_router);
 
-app.use('/api/jobPosts', jobPost_router);
+app.use('/api/job-posts', jobPost_router);
 
 app.use("/api/job-seekers", jobSeeker_router);
 

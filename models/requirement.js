@@ -5,19 +5,23 @@ class requirement{
     Age
     Major
     NumberExperienceYears
+    Address
 
     static create_requirement(
         Age,
         Major,
-        NumberExperienceYears
+        NumberExperienceYears,
+        Address
       ) {
         return new Promise((resolve) => {
-          const sql = "INSERT INTO requirements (Age, Major, NumberExperienceYears) VALUES (?, ?, ?)";
+          const sql = "INSERT INTO requirements (Age, Major, NumberExperienceYears, Address) VALUES (?, ?, ?, ?)";
           const values = 
           [ 
             Age,
             Major,
-            NumberExperienceYears];
+            NumberExperienceYears,
+            Address
+        ];
           
           db.query(sql, values, (err, result) => {
             if (err) {
@@ -32,7 +36,7 @@ class requirement{
     
       static get_requirement(RequirementID) {
         return new Promise((resolve) => {
-          const sql = "SELECT * FROM `requirements` WHERE `JobSeekerID` = ?";
+          const sql = "SELECT * FROM `requirements` WHERE `RequirementID` = ?";
           //const values = [employerId];
           
           db.query(sql, [RequirementID], (err, result) => {
@@ -86,7 +90,7 @@ class requirement{
           const sql = "DELETE FROM `requirements` WHERE `RequirementID` = ?";
           //const values = [employerId];
           
-          db.query(sql, [JobID], (err, result) => {
+          db.query(sql, [RequirementID], (err, result) => {
             if (err) {
               console.error("Error delete_requirements ", err);
               resolve(err);

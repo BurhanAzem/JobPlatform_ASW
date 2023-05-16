@@ -13,7 +13,7 @@ CREATE TABLE employers (
 -- Create table "requirements"
 CREATE TABLE requirements (
   RequirementID INT PRIMARY KEY AUTO_INCREMENT,
-  Age INT,
+  Age VARCHAR(25),
   Major VARCHAR(255),
   NumberExperienceYears INT,
   Address VARCHAR(255)

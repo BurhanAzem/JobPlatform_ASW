@@ -49,6 +49,32 @@ class jobSeeker_controller{
         passwordHashed
       );
 
+      }
+      static async update_jobSeeker(req, res) {
+        const jobSeekerID = parseInt(req.params.id)
+          const {         
+            jobSeekerName,
+            address,
+            major,
+            age,
+            numberExperienceYears, 
+            email, 
+            password } = req.body;
+            console.log(jobSeekerName);
+          const passwordSlot = await bcrypt.genSalt();
+          const passwordHashed = await bcrypt.hash(password, passwordSlot);
+          var result = await jobSeekerModel.create_jobSeeker(
+            jobSeekerID,
+            jobSeekerName,
+            address,
+            major,
+            age,
+            numberExperienceYears, 
+            email, 
+            passwordSlot, 
+            passwordHashed
+          );
+
     //   res.status(201).json(result);
     // } catch (err) {
     //   res.status(500).json({ error: err.message });

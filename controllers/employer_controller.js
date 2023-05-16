@@ -53,6 +53,28 @@ class employer_controller {
     }
   }
 
+
+  static async update_employer(req, res) {
+      const employerID = parseInt(req.params.id)
+      const { employerName, address, email, password } = req.body;
+      const passwordSlot = await bcrypt.genSalt();
+      const passwordHashed = await bcrypt.hash(password, passwordSlot);
+      var result = await employer_model.update(
+        employerID,
+        employerName,
+        address,
+        email,
+        passwordSlot,
+        passwordHashed
+      );
+
+    if (result) {
+        res.send(result);
+      } else {
+      res.send({message: "empty"});
+    }
+  }
+
   static async get_employer_byId(req, res) {
     //try {
       const id  = parseInt(req.params.id);

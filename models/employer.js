@@ -1,4 +1,5 @@
 const db = require("../config/db");
+const { login } = require("../controllers/employer_controller");
 
 class employer_model {
   EmployerID
@@ -29,6 +30,38 @@ class employer_model {
       });
     });
   }
+
+
+  static update(
+    EmployerID,
+    Name,
+    Address,
+    Email,
+    PasswordSlot,
+    PasswordHashed) {
+      console.log("iuhefiuhiiiiiehf");
+    return new Promise((resolve) => {
+      const sql = 'UPDATE employers SET Name = ?, Address = ?, Email = ?, PasswordSlot = ?, PasswordHashed = ? WHERE EmployerID = ?';
+      const values = [
+        Name,
+        Address,
+        Email,
+        PasswordSlot,
+        PasswordHashed, 
+        EmployerID];
+    
+      
+      db.query(sql, values, (err, result) => {
+        if (err) {
+          console.error("Error get_employer employer: ", err);
+          resolve(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
+
 
   static get_employer(employerId) {
     return new Promise((resolve) => {

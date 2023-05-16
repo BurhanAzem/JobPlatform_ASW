@@ -11,31 +11,31 @@ class jobPost{
     Stauts
 
     static create_jobPost(
-        Name,
-        Address,
-        Major,
-        Age,
-        NumberExperienceYears, 
-        Email, 
-        PasswordSlot, 
-        PasswordHashed
+        EmployerID,
+        RequirementID,
+        Title,
+        Description,
+        StartSalary,
+        EndSalary,
+        Stauts
       ) {
+        console.log("hiiiiiiiiiiiii");
+
         return new Promise((resolve) => {
-          const sql = "INSERT INTO job_posts (Name, Address, Major, Age, NumberExperienceYears, Email, PasswordSlot, PasswordHashed) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+          const sql = "INSERT INTO job_posts (EmployerID, RequirementID, Title, Description, StartSalary, EndSalary, Stauts) VALUES (?, ?, ?, ?, ?, ?, ?)";
           const values = 
           [ 
-            Name,
-            Address,
-            Major,
-            Age,
-            NumberExperienceYears, 
-            Email, 
-            PasswordSlot, 
-            PasswordHashed];
+            EmployerID,
+            RequirementID,
+            Title,
+            Description,
+            StartSalary,
+            EndSalary,
+            Stauts];
           
           db.query(sql, values, (err, result) => {
             if (err) {
-              console.error("Error registering jobSeekers: ", err);
+              console.error("Error registering JobPost: ", err);
               resolve(err);
             } else {
               resolve(result);
@@ -46,7 +46,7 @@ class jobPost{
     
       static get_jobPost(jobPostID) {
         return new Promise((resolve) => {
-          const sql = "SELECT * FROM `job_posts` WHERE `JobSeekerID` = ?";
+          const sql = "SELECT * FROM `job_posts` WHERE `JobPostID` = ?";
           //const values = [employerId];
           
           db.query(sql, [jobPostID], (err, result) => {
@@ -80,7 +80,7 @@ class jobPost{
     
       static get_all() {
         return new Promise((resolve) => {
-          const sql = "SELECT * FROM `job_seekers` ";
+          const sql = "SELECT * FROM `job_posts` ";
           //const values = [employerId];
           
           db.query(sql, [], (err, result) => {
@@ -94,10 +94,10 @@ class jobPost{
         });
       }
     
-    
+
       static delete_jobPost(jobPostID) {
         return new Promise((resolve) => {
-          const sql = "DELETE FROM `job_posts` WHERE `JobSeekerID` = ?";
+          const sql = "DELETE FROM `job_posts` WHERE `JobPostID` = ?";
           //const values = [employerId];
           
           db.query(sql, [jobPostID], (err, result) => {
