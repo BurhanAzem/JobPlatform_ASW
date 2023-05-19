@@ -96,6 +96,24 @@ class employer_model {
     });
   }
 
+  static get_jobApplications(id) {
+    return new Promise((resolve) => {
+      const sql = "SELECT * FROM `employers` WHERE `Email` = ?";
+      //const values = [employerId];
+      
+      db.query(sql, [id], (err, result) => {
+        if (err) {
+          console.error("Error get_employer employer: ", err);
+          resolve(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
+
+
+
 
   static get_all() {
     return new Promise((resolve) => {

@@ -10,6 +10,7 @@ router.get('/:id', jobSeeker_controller.get_jobSeeker_byId)
 router.put('/:id', jobSeeker_controller.update_jobSeeker)
 router.delete('/:id', jobSeeker_controller.delete_jobSeeker_byId)
 router.get('/', jobSeeker_controller.get_all_jobSeeker)
+router.get('/bestmatch/:id', jobSeeker_controller.get_bestMatches)
 
 module.exports = router;
  

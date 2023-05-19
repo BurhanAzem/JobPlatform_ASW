@@ -132,6 +132,23 @@ class jobSeeker{
           });
         });
       }
+
+
+      static get_Matches(id) {
+        return new Promise((resolve) => {
+          const sql = "SELECT jp.* FROM job_posts jp INNER JOIN requirements r ON jp.requirementID = r.RequirementID INNER JOIN job_seekers js ON js.JobSeekerID = ? WHERE js.major = r.major  AND ((js.Address = r.Address) or r.Address='any') AND js.NumberExperienceYears >= r.NumberExperienceYears and CAST(SUBSTRING_INDEX(r.age, '-', 1) AS UNSIGNED) < CAST(js.age AS UNSIGNED) AND CAST(SUBSTRING_INDEX(r.age, '-', -1) AS UNSIGNED) >CAST(js.age AS UNSIGNED) ORDER BY jp.startSalary;";
+        
+          
+          db.query(sql, [id], (err, result) => {
+            if (err) {
+              console.error("Error getting best matches : ", err);
+              resolve(err);
+            } else {
+              resolve(result);
+            }
+          });
+        });
+      }
     
     
       static delete_jobSeeker(JobSeekerID) {
