@@ -1,12 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const jobApplicationController = require("../controllers/jobApplication_controller");
+
+const jobApplication_controller = require("../controllers/jobApplication_controller");
 
 
 
-//router.post("/api/admin/get_all_trainee/:filename",traineeController.get_all_trainee);//get trainee data
+
 
 router.get('/:id', jobApplicationController.get_Applications)
 router.put('/', jobApplicationController.update_jobApplication)
+
+router.get('/public/assets/h', (req, res) => {
+    res.render('file');
+})
+router.post('/', jobApplication_controller.create_jobApplication)
+router.get('', jobApplication_controller.get_all_job_applications)
+
+// router.post('')
+
 module.exports = router;
  

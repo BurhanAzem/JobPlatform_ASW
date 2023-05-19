@@ -42,10 +42,6 @@ class employer_controller {
         passwordHashed
       );
 
-    //   res.status(201).json(result);
-    // } catch (err) {
-    //   res.status(500).json({ error: err.message });
-    // }
     if (result) {
         res.send(result);
       } else {
