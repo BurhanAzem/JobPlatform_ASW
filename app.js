@@ -21,13 +21,6 @@ const jobSeeker_router = require("./routes/jobSeeker_router");
 const requirement_router = require("./routes/requirement_router");
 
 const searchHistory_router = require("./routes/searchHistory_router");
-//const __filename = fileURLToPath(import.meta.url)
-//const __dirname = path.dirname(__filename)
-  
-
-// Configure views directory and templating engine
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
 
 // app.use("/assets", express.static(path.join(__dirname, 'public/assets')))
 const storage = multer.diskStorage({
@@ -43,6 +36,10 @@ const upload = multer({ storage })
 
 
 
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+app.use('/public/assets', express.static('public/assets'));
 
 // for json encoding :
 app.use(bodyParser.json());
@@ -50,11 +47,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
  
 
 // handling routes :
-app.use('/upload', express.static('Upload'));
+// app.use('/upload', express.static('Upload'));
+
+app.use('/api/job-applications', jobApplication_router)
 
 app.use("/api/employers", employer_router);
 
-app.use('/api/job-applications', jobApplication_router);
+// app.use('/api/job-applications', jobApplication_router);
 
 app.use('/api/job-posts', jobPost_router);
 

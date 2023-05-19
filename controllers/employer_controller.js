@@ -42,10 +42,6 @@ class employer_controller {
         passwordHashed
       );
 
-    //   res.status(201).json(result);
-    // } catch (err) {
-    //   res.status(500).json({ error: err.message });
-    // }
     if (result) {
         res.send(result);
       } else {
@@ -81,8 +77,19 @@ class employer_controller {
       console.log(id);
       var result = await employer_model.get_employer(id);
 
-      if (result) {
-        res.send(result);
+      var extractedData = result.map((employer) => {
+        return {
+            EmployerID: employer.EmployerID,
+            Name: employer.Name,
+            Address: employer.Address,
+            Email: employer.Email,
+        };
+      });
+
+
+
+      if (extractedData) {
+        res.send(extractedData);
       } else {
       res.send({message: "empty"});
     }

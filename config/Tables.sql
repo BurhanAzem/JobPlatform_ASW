@@ -42,8 +42,8 @@ CREATE TABLE job_posts (
   StartSalary DECIMAL(10,2),
   EndSalary DECIMAL(10,2),
    Stauts varchar(20),
-  FOREIGN KEY (EmployerID) REFERENCES employers(EmployerID),
-  FOREIGN KEY (RequirementID) REFERENCES requirements(RequirementID)
+  FOREIGN KEY (EmployerID) REFERENCES employers(EmployerID) ON DELETE CASCADE,
+  FOREIGN KEY (RequirementID) REFERENCES requirements(RequirementID) ON DELETE CASCADE
 );
 -- Create table "search_history"
 CREATE TABLE search_history (
@@ -51,8 +51,8 @@ CREATE TABLE search_history (
   JobSeekerID INT,
   JobPostID INT,
   SearchedDate DATE,
-  FOREIGN KEY (JobSeekerID) REFERENCES job_seekers(JobSeekerID),
-   FOREIGN KEY (JobPostID) REFERENCES job_posts(JobPostID)
+  FOREIGN KEY (JobSeekerID) REFERENCES job_seekers(JobSeekerID) ON DELETE CASCADE,
+   FOREIGN KEY (JobPostID) REFERENCES job_posts(JobPostID) ON DELETE CASCADE
 
 );
 
@@ -61,12 +61,12 @@ CREATE TABLE search_history (
 
 -- Create table "job_applications"
 CREATE TABLE job_applications (
-  ApplicationJobID INT PRIMARY KEY,
+  ApplicationJobID INT PRIMARY KEY AUTO_INCREMENT,
   JobPostID INT,
   JobSeekerID INT,
   ResumePath VARCHAR(255),
   CoverLetter TEXT,
   Stauts varchar(20),
-  FOREIGN KEY (JobPostID) REFERENCES job_posts(JobPostID),
-  FOREIGN KEY (JobSeekerID) REFERENCES job_seekers(JobSeekerID)
+  FOREIGN KEY (JobPostID) REFERENCES job_posts(JobPostID) ON DELETE CASCADE,
+  FOREIGN KEY (JobSeekerID) REFERENCES job_seekers(JobSeekerID) ON DELETE CASCADE
 );
