@@ -49,6 +49,11 @@ class jobSeeker_controller{
         passwordHashed
       );
 
+      if (result) {
+        res.send(result);
+      } else {
+      res.send({message: "empty"});
+    }
       }
       static async update_jobSeeker(req, res) {
         const jobSeekerID = parseInt(req.params.id)
@@ -60,10 +65,10 @@ class jobSeeker_controller{
             numberExperienceYears, 
             email, 
             password } = req.body;
-            console.log(jobSeekerName);
+            console.log(jobSeekerID);
           const passwordSlot = await bcrypt.genSalt();
           const passwordHashed = await bcrypt.hash(password, passwordSlot);
-          var result = await jobSeekerModel.create_jobSeeker(
+          var result = await jobSeekerModel.update(
             jobSeekerID,
             jobSeekerName,
             address,
@@ -75,10 +80,6 @@ class jobSeeker_controller{
             passwordHashed
           );
 
-    //   res.status(201).json(result);
-    // } catch (err) {
-    //   res.status(500).json({ error: err.message });
-    // }
     if (result) {
         res.send(result);
       } else {
@@ -92,11 +93,27 @@ class jobSeeker_controller{
       console.log(id);
       var result = await jobSeekerModel.get_jobSeeker(id);
 
-      if (result) {
-        res.send(result);
+      var extractedData = result.map((jobSeeker) => {
+        return {
+
+            JobSeekerID : jobSeeker.JobSeekerID,
+            Name: jobSeeker.Name,
+            Address: jobSeeker.Address,
+            Major: jobSeeker.Major,
+            Age: jobSeeker.Age,
+            NumberExperienceYears: jobSeeker.NumberExperienceYears,
+            Email: jobSeeker.Email,
+        };
+      });
+
+
+
+      if (extractedData) {
+        res.send(extractedData);
       } else {
       res.send({message: "empty"});
     }
+
   }
 
 

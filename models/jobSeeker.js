@@ -46,6 +46,42 @@ class jobSeeker{
           });
         });
       }
+
+
+      static update(
+        JobSeekerID,
+        Name,
+        Address,
+        Major,
+        Age,
+        NumberExperienceYears, 
+        Email, 
+        PasswordSlot, 
+        PasswordHashed) {
+        return new Promise((resolve) => {
+          const sql = 'UPDATE job_seekers SET Name = ?, Address = ?, Major = ?, Age = ?, NumberExperienceYears = ?, Email = ?, PasswordSlot = ?, PasswordHashed = ? WHERE JobSeekerID = ?';
+          const values = [
+            Name,
+            Address,
+            Major,
+            Age,
+            NumberExperienceYears, 
+            Email, 
+            PasswordSlot, 
+            PasswordHashed, 
+            JobSeekerID];
+        
+          
+          db.query(sql, values, (err, result) => {
+            if (err) {
+              console.error("Error get_employer employer: ", err);
+              resolve(err);
+            } else {
+              resolve(result);
+            }
+          });
+        });
+      }
     
       static get_jobSeeker(JobSeekerID) {
         return new Promise((resolve) => {
