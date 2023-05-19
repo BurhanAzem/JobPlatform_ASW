@@ -99,6 +99,30 @@ class jobSeeker_controller{
     }
   }
 
+  static async get_bestMatches(req, res) {
+    //try {
+      const id  = parseInt(req.params.id);
+      console.log(id);
+      var result = await jobSeekerModel.get_Matches(id);
+      var extractedData = result.map((BM) => {
+        return {
+            JobID : BM.JobPostID,
+            JobTitle: BM.Title,
+            Description: BM.Description,
+            StartSalary: BM.StartSalary,
+            EndSalary: BM.EndSalary,
+            Status: BM.Status
+        };
+      });
+      if (extractedData) {
+        
+        res.send(extractedData);
+      } else {
+      res.send({message: "empty"});
+    }
+  }
+
+
 
   static async get_all_jobSeeker(req, res) {
     //try {
