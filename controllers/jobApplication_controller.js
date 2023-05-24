@@ -116,4 +116,5 @@ class jobApplication_controller{
 
 
 }
+}
 module.exports = jobApplication_controller;

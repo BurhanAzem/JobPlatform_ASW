@@ -7,8 +7,8 @@ const jobApplication_controller = require("../controllers/jobApplication_control
 
 
 
-router.get('/:id', jobApplicationController.get_Applications)
-router.put('/', jobApplicationController.update_jobApplication)
+router.get('/:id', jobApplication_controller.get_Applications)
+router.put('/', jobApplication_controller.update_jobApplication)
 
 router.get('/public/assets/h', (req, res) => {
     res.render('file');
