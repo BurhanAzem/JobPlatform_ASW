@@ -92,6 +92,7 @@ class employer_controller {
         res.send(extractedData);
       } else {
       res.send({message: "empty"});
+      
     }
   }
 

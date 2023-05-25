@@ -11,6 +11,7 @@ router.get('/:id', requireAuthentication, jobSeeker_controller.get_jobSeeker_byI
 router.put('/:id', requireAuthentication, jobSeeker_controller.update_jobSeeker)
 router.delete('/:id', requireAuthentication, jobSeeker_controller.delete_jobSeeker_byId)
 router.get('/', requireAuthentication, jobSeeker_controller.get_all_jobSeeker)
+router.get('/bestmatch/:id', requireAuthentication, jobSeeker_controller.get_bestMatches)
 
 module.exports = router;
  
