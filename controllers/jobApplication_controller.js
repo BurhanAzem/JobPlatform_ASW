@@ -114,11 +114,8 @@ class jobApplication_controller{
       res.send({message: "empty"});
     }
 
-<<<<<<< HEAD
   }
-=======
 
 }
->>>>>>> 8fcfa5a01c02b26b4e2e44134faade0059426f1f
-}
+
 module.exports = jobApplication_controller;
