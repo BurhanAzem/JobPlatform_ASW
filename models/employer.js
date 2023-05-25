@@ -39,7 +39,10 @@ class employer_model {
     Email,
     PasswordSlot,
     PasswordHashed) {
+<<<<<<< HEAD
       console.log("iuhefiuhiiiiiehf");
+=======
+>>>>>>> 8fcfa5a01c02b26b4e2e44134faade0059426f1f
     return new Promise((resolve) => {
       const sql = 'UPDATE employers SET Name = ?, Address = ?, Email = ?, PasswordSlot = ?, PasswordHashed = ? WHERE EmployerID = ?';
       const values = [

@@ -44,6 +44,44 @@ class jobPost{
         });
       }
     
+<<<<<<< HEAD
+=======
+
+      static update(
+        JobPostID,
+        EmployerID,
+        RequirementID,
+        Title,
+        Description,
+        StartSalary,
+        EndSalary,
+        Stauts) {
+        return new Promise((resolve) => {
+          const sql = 'UPDATE employers SET EmployerID = ?, RequirementID = ?, Title = ?, Description = ?, StartSalary = ?, EndSalary = ?, Stauts = ? WHERE JobPostID = ?';
+          const values = [
+            EmployerID,
+            RequirementID,
+            Title,
+            Description,
+            StartSalary,
+            EndSalary,
+            Stauts, 
+            JobPostID];
+        
+          
+          db.query(sql, values, (err, result) => {
+            if (err) {
+              console.error("Error get_employer employer: ", err);
+              resolve(err);
+            } else {
+              resolve(result);
+            }
+          });
+        });
+      }
+
+
+>>>>>>> 8fcfa5a01c02b26b4e2e44134faade0059426f1f
       static get_jobPost(jobPostID) {
         return new Promise((resolve) => {
           const sql = "SELECT * FROM `job_posts` WHERE `JobPostID` = ?";

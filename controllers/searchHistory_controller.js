@@ -25,6 +25,7 @@ class searchHistory_controller {
     const id = parseInt(req.params.id);
     console.log(id);
     var result = await searchHistoryModel.get_savedJobs(id);
+<<<<<<< HEAD
     if (result) {
       res.send(result);
     } else {
@@ -44,6 +45,23 @@ class searchHistory_controller {
     // } else {
     //   res.send({ message: "empty" });
     // }
+=======
+
+    var extractedData = result.map((Jobs) => {
+      return {
+        ID: Jobs.SearchHistoryID,
+        JobPostID: Jobs.JobSeekerID,
+        JobTitle: Jobs.JobTitle,
+        SearchedDate: Jobs.SearchedDate,
+      };
+    });
+
+    if (extractedData) {
+      res.send(extractedData);
+    } else {
+      res.send({ message: "empty" });
+    }
+>>>>>>> 8fcfa5a01c02b26b4e2e44134faade0059426f1f
   }
   static async delete_savedJob(req, res) {
     //try {
