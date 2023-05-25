@@ -9,8 +9,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
+    "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+=======
     "auth": "^0.0.9",
     "bcrypt": "^5.1.0",
+>>>>>>> 8fcfa5a01c02b26b4e2e44134faade0059426f1f
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",

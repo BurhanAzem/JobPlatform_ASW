@@ -36,7 +36,11 @@ class SearchHistory{
 
       static get_savedJobs(id) {
         return new Promise((resolve) => {
+<<<<<<< HEAD
+          const sql = "SELECT sh.JobSeekerID, sh.SearchedDate, jp.JobPostID , jp.title AS JobTitle FROM search_history sh JOIN job_posts jp ON sh.JobPostID = jp.JobPostID WHERE sh.JobSeekerID = ?";
+=======
           const sql = "SELECT sh.*, jp.title AS JobTitle FROM search_history sh JOIN job_posts jp ON sh.JobPostID = jp.JobPostID WHERE sh.JobSeekerID = ?";
+>>>>>>> 8fcfa5a01c02b26b4e2e44134faade0059426f1f
           
           
           db.query(sql, [id], (err, result) => {

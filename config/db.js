@@ -3,7 +3,11 @@ const mysql = require("mysql2");
 const db = mysql.createPool({
   host: 'localhost',
   user: 'root',
+<<<<<<< HEAD
+  password: 'system',
+=======
   password: '',
+>>>>>>> 8fcfa5a01c02b26b4e2e44134faade0059426f1f
   database: 'jobsplatform'
 });
 db.getConnection(() => {

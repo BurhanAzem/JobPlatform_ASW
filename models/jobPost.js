@@ -44,6 +44,8 @@ class jobPost{
         });
       }
     
+<<<<<<< HEAD
+=======
 
       static update(
         JobPostID,
@@ -79,6 +81,7 @@ class jobPost{
       }
 
 
+>>>>>>> 8fcfa5a01c02b26b4e2e44134faade0059426f1f
       static get_jobPost(jobPostID) {
         return new Promise((resolve) => {
           const sql = "SELECT * FROM `job_posts` WHERE `JobPostID` = ?";
