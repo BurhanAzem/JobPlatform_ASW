@@ -21,14 +21,9 @@ const jobSeeker_router = require("./routes/jobSeeker_router");
 const requirement_router = require("./routes/requirement_router");
 
 const searchHistory_router = require("./routes/searchHistory_router");
-<<<<<<< HEAD
 const github_repo = require("./routes/github_repo");
 
-
-=======
-
 const search_router = require("./routes/search_router");
->>>>>>> 8fcfa5a01c02b26b4e2e44134faade0059426f1f
 // app.use("/assets", express.static(path.join(__dirname, 'public/assets')))
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -68,16 +63,11 @@ app.use("/api/job-seekers", jobSeeker_router);
 
 app.use('/api/requirements', requirement_router);
 
-<<<<<<< HEAD
-app.use('/api/saved-jobs', searchHistory_router);
-
 app.use('/api/fetch-repo', github_repo);
-=======
 app.use('/searchHistories', searchHistory_router);
-app.use('/api/saved-jobs', searchHistory_router);
+//app.use('/api/saved-jobs', searchHistory_router);
 
 app.use('/api/search-by', search_router);
->>>>>>> 8fcfa5a01c02b26b4e2e44134faade0059426f1f
 
 
 app.use(async (error, req, res, next) => {
