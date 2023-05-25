@@ -61,7 +61,7 @@ app.use("/api/job-seekers", jobSeeker_router);
 
 app.use('/api/requirements', requirement_router);
 
-app.use('/searchHistoryes', searchHistory_router);
+app.use('/searchHistories', searchHistory_router);
 
 app.use(async (error, req, res, next) => {
     let statusCode = error.statusCode || 500;
