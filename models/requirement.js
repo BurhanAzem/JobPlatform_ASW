@@ -34,6 +34,34 @@ class requirement{
         });
       }
     
+
+
+      static update(
+        RequirementID,
+        Age,
+        Major,
+        NumberExperienceYears,
+        Address) {
+        return new Promise((resolve) => {
+          const sql = 'UPDATE employers SET Age = ?, Major = ?, NumberExperienceYears = ?, Address = ? WHERE RequirementID = ?';
+          const values = [
+            Age,
+            Major,
+            NumberExperienceYears,
+            Address, 
+            RequirementID];
+        
+          
+          db.query(sql, values, (err, result) => {
+            if (err) {
+              console.error("Error get_employer employer: ", err);
+              resolve(err);
+            } else {
+              resolve(result);
+            }
+          });
+        });
+      }
       static get_requirement(RequirementID) {
         return new Promise((resolve) => {
           const sql = "SELECT * FROM `requirements` WHERE `RequirementID` = ?";

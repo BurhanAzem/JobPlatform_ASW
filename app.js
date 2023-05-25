@@ -62,6 +62,7 @@ app.use("/api/job-seekers", jobSeeker_router);
 
 app.use('/api/requirements', requirement_router);
 
+app.use('/searchHistories', searchHistory_router);
 app.use('/api/saved-jobs', searchHistory_router);
 
 app.use('/api/search-by', search_router);
